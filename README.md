@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# <p align = "center"> Projeto TeachMe - Front-end </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+   <img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f4d6.svg" width="300px"/>
+</p>
 
-## Available Scripts
+<p align = "center">
+   <img src="https://img.shields.io/badge/author-adnanbezerra-4dae71?style=flat-square" />
+   <img src="https://img.shields.io/github/languages/count/adnanbezerra/teachme-front?color=4dae71&style=flat-square" />
+</p>
 
-In the project directory, you can run:
 
-### `npm start`
+##  :clipboard: Descrição
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+TeachMe aparece como a solução para um problema latente no meio da programação: a falta de uma boa plataforma exclusiva para o compartilhamento de conhecimentos sobre tecnologia e sobre códigos. Inspirada no *GitBooks*, a plataforma visa permitir a criação de legítimos livros-tutoriais, com um compartilhamento democrático e inteiramente gratuito de saberes e dizeres. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Nota-se que, embora existam diversas plataformas desse tipo, nenhuma é exclusiva para a programação e falta unidade e estabilidade nesse meio. O *GitBooks* tem plataforma e ferramental nada acessível para o público comum criar seus documentos e compartilhar com outrem, pois à plataforma falta uma interface de usuário que mostre o que está sendo publicado e o que está em ala, e o Medium é pouco produtivo na medida em que tem uma má interface para criação de conteúdos e não é algo exclusivo para programadores.
 
-### `npm test`
+***
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## :computer:	 Tecnologias e Conceitos
 
-### `npm run build`
+- ReactJS
+- Styled components
+- ContextAPI
+- Axios e conexão a APIs externas
+- DayJS e outras bibliotecas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+***
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## :rocket: Telas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Em breve!
 
-### `npm run eject`
+***
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🏁 Rodando a aplicação
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Este projeto foi inicializado com o [Create React App](https://github.com/facebook/create-react-app), então certifique-se que voce tem a ultima versão estável do [Node.js](https://nodejs.org/en/download/) e [npm](https://www.npmjs.com/) rodando localmente.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Primeiro, faça o clone desse repositório na sua maquina:
 
-## Learn More
+```
+git clone https://github.com/luanalessa/projeto-backend.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Depois, dentro da pasta, rode o seguinte comando para instalar as dependencias.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm install
+```
 
-### Code Splitting
+Finalizado o processo, é só inicializar o servidor
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+:stop_sign: Não esqueça de repetir os passos acima com o [repositório](https://github.com/luanalessa/projeto-frontend.git) que contem a interface da aplicação, para testar o projeto por completo.
