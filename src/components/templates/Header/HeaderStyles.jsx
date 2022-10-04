@@ -5,8 +5,9 @@ export const Container = styled.header`
     height: 60px;
     background-color: #24292F;
     display: flex;
+    top: 0;
 
-    position: absolute;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
