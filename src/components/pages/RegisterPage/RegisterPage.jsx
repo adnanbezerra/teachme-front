@@ -3,7 +3,7 @@ import { BottomText, Container, Form, FormButton, FormInput, FormLabel, ReturnBu
 import axios from "axios";
 import { BASE_URL } from "../../../mock/data";
 import { useNavigate, Link } from "react-router-dom";
-import { BsBookFill } from "react-icons/bs";
+import { IoBook } from "react-icons/io5";
 import { RiArrowLeftSLine } from "react-icons/ri";
 
 export default function RegisterPage() {
@@ -43,7 +43,7 @@ export default function RegisterPage() {
                 </ReturnButton>
             </Link>
 
-            <BsBookFill style={{ fontSize: "70px", marginBottom: "5px" }} />
+            <IoBook style={{ fontSize: "70px", marginBottom: "5px" }} />
             <p>Cadastrar-se no TeachMe</p>
 
             <Form onSubmit={submitForm}>

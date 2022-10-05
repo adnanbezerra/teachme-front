@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./LoginPageStyles";
-import { BsBookFill } from "react-icons/bs";
+import { IoBook } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../../mock/data";
@@ -8,7 +8,7 @@ import UserContext from "../../contexts/UserContext";
 
 export default function LoginPage() {
 
-    const {setUser} = useContext(UserContext);
+    // const { setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function LoginPage() {
 
         axios.post(`${BASE_URL}/`, payload)
             .then(response => {
-                setUser(response.data);
+                // setUser(response.data);
                 navigate("/");
             })
             .catch(error => {
@@ -31,7 +31,7 @@ export default function LoginPage() {
 
     return (
         <Container>
-            <BsBookFill style={{ fontSize: "70px", marginBottom: "5px" }} />
+            <IoBook style={{ fontSize: "70px", marginBottom: "5px" }} />
             <p>Cadastrar-se no TeachMe</p>
 
             <Form onSubmit={submitForm}>
