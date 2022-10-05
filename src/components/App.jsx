@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyle from '../assets/styles/GlobalStyle';
 import UserContext from './contexts/UserContext';
 import { Suspense, lazy, useState } from "react";
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 const Loading = () => (
   <div>Loading...</div>
@@ -25,6 +27,8 @@ function App() {
 
       <BrowserRouter>
         <Routes>
+          <Route path={'/register'} element={<RegisterPage />} />
+          <Route path={'/login'} element={<LoginPage />} />
           <Route path={'/'} element={<Template />}>
             <Route path={'/'} element={<MainPage />} />
           </Route>
