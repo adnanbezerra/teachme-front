@@ -22,7 +22,7 @@ function App() {
   const { user, setUser } = useState();
 
   return (
-    <UserContext.Provider values={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser }}>
       <GlobalStyle />
 
       <BrowserRouter>
