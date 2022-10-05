@@ -57,7 +57,7 @@ export default function RegisterPage() {
                 <FormInput id="nickname" value={nickname} required onChange={e => setNickname(e.target.value)} />
 
                 <FormLabel for="profilePicture">Link da foto de perfil (opcional)</FormLabel>
-                <FormInput id="profilePicture" value={profilePicture} onChange={e => setProfilePicture(e.target.value)} />
+                <FormInput id="profilePicture" value={profilePicture} type="url" onChange={e => setProfilePicture(e.target.value)} />
 
                 <FormLabel for="password">Senha</FormLabel>
                 <FormInput id="password" value={password} required type="password" onChange={e => setPassword(e.target.value)} />
