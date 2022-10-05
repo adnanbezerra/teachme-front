@@ -52,7 +52,7 @@ export const FormButton = styled.button`
     height: 30px;
     box-sizing: border-box;
     border: 0;
-    border-radius: 5px;    
+    border-radius: 10px;    
     margin-top: 15px;
 `
 
