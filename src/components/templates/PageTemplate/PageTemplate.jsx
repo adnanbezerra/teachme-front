@@ -5,7 +5,7 @@ import { SideMenu } from "../SideMenu/SideMenu";
 
 export default function PageTemplate() {
     return (
-        <div style={{ "position": "relative" }}>
+        <div style={{ position: "relative", height: "100%" }}>
             <Header />
             <SideMenu />
             <Outlet />
