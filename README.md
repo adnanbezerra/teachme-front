@@ -56,4 +56,4 @@ Finalizado o processo, é só inicializar o servidor
 npm start
 ```
 
-:stop_sign: Não esqueça de repetir os passos acima com o [repositório](https://github.com/luanalessa/projeto-frontend.git) que contem a interface da aplicação, para testar o projeto por completo.
+:stop_sign: Não esqueça de repetir os passos acima com o [repositório](https://github.com/adnanbezerra/teachme-backend) que contem o back-end da aplicação, para testar o projeto por completo.
