@@ -54,6 +54,10 @@ export const FormButton = styled.button`
     border: 0;
     border-radius: 10px;    
     margin-top: 15px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 export const BottomText = styled.div`
@@ -80,4 +84,8 @@ export const ReturnButton = styled.div`
     position: fixed;
     top: 20px;
     left: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `

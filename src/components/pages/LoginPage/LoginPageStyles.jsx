@@ -54,6 +54,10 @@ export const FormButton = styled.button`
     border: 0;
     border-radius: 5px;    
     margin-top: 15px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 export const BottomText = styled.div`
