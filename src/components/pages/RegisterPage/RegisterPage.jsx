@@ -10,7 +10,6 @@ export default function RegisterPage() {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [nickname, setNickname] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
@@ -21,7 +20,7 @@ export default function RegisterPage() {
 
         if (password !== confirmPassword) alert("As senhas precisam ser iguais!");
 
-        const payload = { name, email, nickname, password, profilePicture };
+        const payload = { name, email, password, profilePicture };
 
         axios.post(`${BASE_URL}/signup`, payload)
             .then(response => {
@@ -48,7 +47,13 @@ export default function RegisterPage() {
 
             <Form onSubmit={submitForm}>
                 <FormLabel for="email">Email</FormLabel>
-                <FormInput id="email" value={email} type="email" required onChange={e => setEmail(e.target.value)} />
+                <FormInput id="email"
+                    value={email}
+                    type="email"
+                    placeholder="Digite o seu email..."
+                    required
+                    onChange={e => setEmail(e.target.value)}
+                />
 
                 <FormLabel for="name">Seu nome</FormLabel>
                 <FormInput id="name"
