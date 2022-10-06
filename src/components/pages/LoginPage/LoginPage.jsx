@@ -5,22 +5,39 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../../mock/data";
 import UserContext from "../../contexts/UserContext";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
 
-    // const { setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    function notify() {
+        toast.success('Login feito com sucesso!', {
+            position: "top-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+
     function submitForm(e) {
         e.preventDefault();
 
+        console.log('rodo');
+
+        notify("Roda mano pprt");
+
         const payload = { email, password };
 
-        axios.post(`${BASE_URL}/`, payload)
+        axios.post(`${BASE_URL}/signin`, payload)
             .then(response => {
-                // setUser(response.data);
+                setUser(response.data);
                 navigate("/");
             })
             .catch(error => {
@@ -36,10 +53,22 @@ export default function LoginPage() {
 
             <Form onSubmit={submitForm}>
                 <FormLabel for="email">Email</FormLabel>
-                <FormInput id="email" value={email} type="email" required onChange={e => setEmail(e.target.value)} />
+                <FormInput id="email"
+                    value={email}
+                    placeholder="Digite o seu email..."
+                    type="email"
+                    required
+                    onChange={e => setEmail(e.target.value)}
+                />
 
                 <FormLabel for="password">Senha</FormLabel>
-                <FormInput id="password" value={password} type="password" required onChange={e => setPassword(e.target.value)} />
+                <FormInput id="password"
+                    value={password}
+                    type="password"
+                    placeholder="password"
+                    required
+                    onChange={e => setPassword(e.target.value)}
+                />
 
                 <FormButton>Fazer login</FormButton>
             </Form>

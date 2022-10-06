@@ -19,7 +19,7 @@ export default function RegisterPage() {
     function submitForm(e) {
         e.preventDefault();
 
-        if(password !== confirmPassword) alert("As senhas precisam ser iguais!");
+        if (password !== confirmPassword) alert("As senhas precisam ser iguais!");
 
         const payload = { name, email, nickname, password, profilePicture };
 
@@ -51,19 +51,38 @@ export default function RegisterPage() {
                 <FormInput id="email" value={email} type="email" required onChange={e => setEmail(e.target.value)} />
 
                 <FormLabel for="name">Seu nome</FormLabel>
-                <FormInput id="name" value={name} required onChange={e => setName(e.target.value)} />
-
-                <FormLabel for="nickname">Nickname</FormLabel>
-                <FormInput id="nickname" value={nickname} required onChange={e => setNickname(e.target.value)} />
+                <FormInput id="name"
+                    value={name}
+                    required
+                    placeholder="Digite o seu nome..."
+                    onChange={e => setName(e.target.value)}
+                />
 
                 <FormLabel for="profilePicture">Link da foto de perfil (opcional)</FormLabel>
-                <FormInput id="profilePicture" value={profilePicture} type="url" onChange={e => setProfilePicture(e.target.value)} />
+                <FormInput id="profilePicture"
+                    value={profilePicture}
+                    type="url"
+                    placeholder="Insira um link, se quiser"
+                    onChange={e => setProfilePicture(e.target.value)}
+                />
 
                 <FormLabel for="password">Senha</FormLabel>
-                <FormInput id="password" value={password} required type="password" onChange={e => setPassword(e.target.value)} />
+                <FormInput id="password"
+                    value={password}
+                    required
+                    type="password"
+                    placeholder="password"
+                    onChange={e => setPassword(e.target.value)}
+                />
 
                 <FormLabel for="confirmPassword">Confirmar a senha</FormLabel>
-                <FormInput id="confirmPassword" value={confirmPassword} required type="password" onChange={e => setConfirmPassword(e.target.value)} />
+                <FormInput id="confirmPassword"
+                    value={confirmPassword}
+                    required
+                    type="password"
+                    placeholder="password"
+                    onChange={e => setConfirmPassword(e.target.value)}
+                />
 
                 <FormButton>Cadastrar</FormButton>
             </Form>

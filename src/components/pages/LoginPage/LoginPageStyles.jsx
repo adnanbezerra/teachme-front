@@ -35,6 +35,10 @@ export const FormInput = styled.input`
     margin-top: 5px;
     padding-left: 10px;
     font-family: 'Roboto', sans-serif;
+
+    ::placeholder {
+        font-style: italic;
+    }
 `
 
 export const FormLabel = styled.label`
