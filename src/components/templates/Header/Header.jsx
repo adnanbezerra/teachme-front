@@ -9,7 +9,7 @@ export function Header() {
         <Container>
             <FaBars style={{ color: "#fff", fontSize: "20px" }} />
 
-            <Title><IoBook style={{ marginRight: "5px" }} />TeachMe</Title>
+            <Link to={"/"} style={{ textDecoration: "none" }}><Title><IoBook style={{ marginRight: "5px" }} />TeachMe</Title></Link>
 
             <Link to={"/search"}><div>
                 <AiOutlineSearch style={{ color: "#fff", fontSize: "30px" }} />
