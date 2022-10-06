@@ -76,7 +76,7 @@ export default function RegisterPage() {
                     value={password}
                     required
                     type="password"
-                    placeholder="password"
+                    placeholder="Insira a sua senha"
                     onChange={e => setPassword(e.target.value)}
                 />
 
@@ -85,7 +85,7 @@ export default function RegisterPage() {
                     value={confirmPassword}
                     required
                     type="password"
-                    placeholder="password"
+                    placeholder="Confirme a sua senha"
                     onChange={e => setConfirmPassword(e.target.value)}
                 />
 
