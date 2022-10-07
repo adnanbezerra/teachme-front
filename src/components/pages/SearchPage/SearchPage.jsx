@@ -1,21 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BASE_URL } from "../../../mock/data";
 import { Container, Form, FormButton, FormInput, NoSearchResults } from "./SearchPageStyles";
 import SearchResultCard from "./SearchResultCard";
 
 export default function SearchPage() {
 
-    const [searchResults, setSearchResults] = useState([
-        {
-            id: 1,
-            name: "Adnan",
-            views: 3,
-            likes: 4,
-            creationDate: '24/4',
-            description: "Adnan Medeiros Bezerra"
-        }
-    ]);
+    const [searchResults, setSearchResults] = useState([]);
     const [search, setSearch] = useState("");
 
     function submitForm(e) {
