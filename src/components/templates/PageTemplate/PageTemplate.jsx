@@ -124,7 +124,7 @@ export default function PersistentDrawerLeft() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Link to={"/"} style={{ textDecoration: "none" }}><Title><IoBook style={{ marginRight: "5px" }} />TeachMe</Title></Link>
+                    <Link to={"/"} style={{ textDecoration: "none" }}><Title><IoBook style={{ marginRight: "10px" }} />TeachMe</Title></Link>
                     <Link to={"/search"}><div>
                         <AiOutlineSearch style={{ color: "#fff", fontSize: "30px" }} />
                     </div></Link>
