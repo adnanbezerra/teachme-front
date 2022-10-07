@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { useContext, useState } from 'react';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { BASE_URL, config, getCookieByName } from '../../../mock/data';
+import { BASE_URL, getCookieByName } from '../../../mock/data';
 import UserContext from '../../contexts/UserContext';
 import SearchResultCard from '../SearchPage/SearchResultCard';
 import { Container, NoResults, PageTitle } from './MainPageStyles'
