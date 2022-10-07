@@ -1,16 +1,15 @@
 import axios from 'axios';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL, config, getCookieByName } from '../../../mock/data';
 import UserContext from '../../contexts/UserContext';
-import { Container } from './MainPageStyles'
+import SearchResultCard from '../SearchPage/SearchResultCard';
+import { Container, NoResults, PageTitle } from './MainPageStyles'
 
 export default function MainPage() {
-
-    const { user, setUser } = useContext(UserContext);
-    const navigate = useNavigate();
-    const verifyUser = user === undefined;
+    const { setUser } = useContext(UserContext);
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const tokenCookie = getCookieByName('token');
@@ -20,9 +19,25 @@ export default function MainPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        axios.get(`${BASE_URL}/posts`)
+            .then(response => {
+                setPosts([...response.data]);
+            })
+            .catch(error => {
+                alert("erro na coleta de posts!")
+                console.error(error);
+            })
+    })
+
     return (
         <Container>
-            oiiiii
+            <PageTitle>Postagens recentes</PageTitle>
+            {posts.length === 0 ?
+                <NoResults>Sem histórias recentes publicadas</NoResults>
+                :
+                posts.map(result => <SearchResultCard id={result.id} name={result.name} views={result.views} likes={result.likes} creationDate={result.creationDate} description={result.description} />)
+            }
         </Container>
     )
 }
