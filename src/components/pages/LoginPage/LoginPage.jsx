@@ -1,18 +1,32 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./LoginPageStyles";
 import { IoBook } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL } from "../../../mock/data";
+import { BASE_URL, getCookieByName } from "../../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
 
-    const { setUser } = useContext(UserContext);
+    const { setUser, user } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user !== undefined) navigate("/", { replace: true });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        const tokenCookie = getCookieByName("token");
+        if (tokenCookie) {
+            setUser({ token: tokenCookie });
+            navigate("/");
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function notify() {
         toast.success('Login feito com sucesso!', {
@@ -37,19 +51,31 @@ export default function LoginPage() {
 
         axios.post(`${BASE_URL}/signin`, payload)
             .then(response => {
-                setUser(response.data);
-                navigate("/");
+                document.cookie = `token=${response.data}; expires=${getDateOneWeekFromNow()}`
+                setUser({ token: response.data });
+                navigate('/timeline');
             })
             .catch(error => {
+                if (error.response.status === 401) {
+                    alert("Email ou senha errados! Tente novamente.");
+                } else if (error.response.status === 422) {
+                    alert("Envie dados válidos!");
+                }
+                
                 console.error(error);
-                alert("Erro no login!");
             })
+    }
+
+    function getDateOneWeekFromNow() {
+        const today = new Date();
+        const nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+        return nextWeek;
     }
 
     return (
         <Container>
             <IoBook style={{ fontSize: "70px", marginBottom: "5px" }} />
-            <p>Cadastrar-se no TeachMe</p>
+            <p>Fazer login no TeachMe</p>
 
             <Form onSubmit={submitForm}>
                 <FormLabel for="email">Email</FormLabel>

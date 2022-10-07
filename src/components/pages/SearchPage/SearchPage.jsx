@@ -1,6 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
-import { BASE_URL } from "../../../mock/data";
+import { useContext } from "react";
+import { useEffect, useState } from "react";
+import { BASE_URL, getCookieByName } from "../../../mock/data";
+import UserContext from "../../contexts/UserContext";
 import { Container, Form, FormButton, FormInput, NoSearchResults } from "./SearchPageStyles";
 import SearchResultCard from "./SearchResultCard";
 
@@ -8,6 +10,15 @@ export default function SearchPage() {
 
     const [searchResults, setSearchResults] = useState([]);
     const [search, setSearch] = useState("");
+    const { user, setUser } = useContext(UserContext);
+
+    useEffect(() => {
+        const tokenCookie = getCookieByName('token');
+        if (tokenCookie) {
+            setUser({ token: tokenCookie });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     function submitForm(e) {
         e.preventDefault();

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BottomText, Container, Form, FormButton, FormInput, FormLabel, ReturnButton } from "./RegisterPageStyles";
 import axios from "axios";
-import { BASE_URL } from "../../../mock/data";
+import { BASE_URL, getCookieByName } from "../../../mock/data";
 import { useNavigate, Link } from "react-router-dom";
 import { IoBook } from "react-icons/io5";
 import { RiArrowLeftSLine } from "react-icons/ri";
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
 
 export default function RegisterPage() {
 
@@ -14,6 +16,21 @@ export default function RegisterPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
     const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
+
+    useEffect(() => {
+        if (user !== undefined) navigate("/", { replace: true });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        const tokenCookie = getCookieByName("token");
+        if (tokenCookie) {
+            setUser({ token: tokenCookie });
+            navigate("/");
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function submitForm(e) {
         e.preventDefault();
@@ -28,8 +45,13 @@ export default function RegisterPage() {
                 navigate("/login", { replace: true });
             })
             .catch(error => {
+                if (error.response.status === 409) {
+                    alert("Email já cadastrado!");
+                } else if (error.response.status === 422) {
+                    alert("Envie dados válidos!");
+                }
+                
                 console.error(error);
-                alert("Erro no cadastro! Contrate o administrador.");
             })
     }
 
