@@ -27,7 +27,7 @@ export default function MainPage() {
                 alert("erro na coleta de posts!")
                 console.error(error);
             })
-    })
+    }, [])
 
     return (
         <Container>
