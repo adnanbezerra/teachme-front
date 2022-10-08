@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 export default function LoginPage() {
 
-    const { setUser, user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -53,7 +53,7 @@ export default function LoginPage() {
             .then(response => {
                 document.cookie = `token=${response.data}; expires=${getDateOneWeekFromNow()}`
                 setUser({ token: response.data });
-                navigate('/timeline');
+                navigate('/');
             })
             .catch(error => {
                 if (error.response.status === 401) {
@@ -61,7 +61,7 @@ export default function LoginPage() {
                 } else if (error.response.status === 422) {
                     alert("Envie dados válidos!");
                 }
-                
+
                 console.error(error);
             })
     }
