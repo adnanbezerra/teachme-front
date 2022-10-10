@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     width: 100%;
-    height: 100%;
+    height: fit-content;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     box-sizing: border-box;
     flex-direction: column;
@@ -26,6 +26,7 @@ export const InfoDiv = styled.div`
     flex-direction: column;
     padding-left: 10px;
     margin-top: 5px;
+    margin-bottom: 20px;
 
     img {
         width: 100px;
