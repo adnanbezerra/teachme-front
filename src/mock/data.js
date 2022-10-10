@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export const BASE_URL = 'http://localhost:5000'
+export const BASE_URL = 'https://teachme-back.herokuapp.com/';
 
 export function config(token) {
     return {
