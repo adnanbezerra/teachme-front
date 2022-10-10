@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { BASE_URL, getCookieByName } from "../../../mock/data";
+import { BASE_URL, getCookieByName, notifyFailure } from "../../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { Container, Form, FormButton, FormInput, NoSearchResults } from "./SearchPageStyles";
 import SearchResultCard from "./SearchResultCard";
@@ -26,12 +26,13 @@ export default function SearchPage() {
         axios.get(`${BASE_URL}/post/${search}`)
             .then(response => {
                 if (response.data.length === 0) {
-                    alert("sem retorno");
+                    notifyFailure("Não encontramos o resultado solicitado!");
                 } else {
                     setSearchResults([...response.data])
                 }
             })
             .catch(error => {
+                notifyFailure("Erro não identificado. Contate o administrador")
                 console.error(error);
             })
     }
