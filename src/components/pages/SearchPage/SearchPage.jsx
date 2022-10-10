@@ -23,7 +23,7 @@ export default function SearchPage() {
     function submitForm(e) {
         e.preventDefault();
 
-        axios.get(`${BASE_URL}/post/${search}`)
+        axios.get(`${BASE_URL}/post/name/${search}`)
             .then(response => {
                 if (response.data.length === 0) {
                     notifyFailure("Não encontramos o resultado solicitado!");

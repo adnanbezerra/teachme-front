@@ -54,7 +54,7 @@ export const NoSearchResults = styled.p`
 
 export const SearchCardContainer = styled.div`
     display: flex;
-    width: 80%;
+    width: 90%;
     background-color: #F6F8FA;
     margin-top: 20px;
     border-radius: 5px;
