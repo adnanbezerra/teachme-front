@@ -89,7 +89,7 @@ function getIcon(index) {
 
 function getList(user) {
     if (user) {
-        return [{ name: "Meu perfil", link: "/user" }, { name: "Criar novo post", link: "/new-post" }, { name: "Postagens populares", link: "/top-posts" }, { name: "Logout", link: "/logout" }];
+        return [{ name: "Meu perfil", link: "/user/me" }, { name: "Criar novo post", link: "/new-post" }, { name: "Postagens populares", link: "/top-posts" }, { name: "Logout", link: "/logout" }];
     } else {
         return [{ name: "Fazer login", link: "/login" }, { name: "Criar conta", link: "/register" }];
     }
