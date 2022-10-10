@@ -10,7 +10,7 @@ export default function SearchPage() {
 
     const [searchResults, setSearchResults] = useState([]);
     const [search, setSearch] = useState("");
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     useEffect(() => {
         const tokenCookie = getCookieByName('token');
