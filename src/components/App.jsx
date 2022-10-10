@@ -23,6 +23,7 @@ const SearchPage = LazyWrapper(lazy(() => import("./pages/SearchPage/SearchPage"
 const Logout = LazyWrapper(lazy(() => import("./pages/LoginPage/Logout")));
 const UserPage = LazyWrapper(lazy(() => import("./pages/UserPage/UserPage")));
 const EditUser = LazyWrapper(lazy(() => import("./pages/EditUserPage/EditUserPage")));
+const NewPost = LazyWrapper(lazy(() => import("./pages/NewPostPage/NewPostPage")));
 
 function App() {
   const [user, setUser] = useState();
@@ -53,6 +54,7 @@ function App() {
             <Route path={'/logout'} element={<Logout />} />
             <Route path={'/user/me'} element={<UserPage />} />
             <Route path={'/edit-user'} element={<EditUser />} />
+            <Route path={'/new-post'} element={<NewPost />} />
           </Route>
         </Routes>
       </BrowserRouter >
