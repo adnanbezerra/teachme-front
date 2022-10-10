@@ -42,7 +42,7 @@ export default function LoginPage() {
                 navigate('/');
             })
             .catch(error => {
-                notifyFailure("Falha no cadastro! Confira suas informações");
+                notifyFailure("Falha no login! Confira suas informações");
                 console.error(error);
             })
     }

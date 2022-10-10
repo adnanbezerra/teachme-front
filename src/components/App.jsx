@@ -29,7 +29,18 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <GlobalStyle />
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
       <BrowserRouter>
         <Routes>
