@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const BASE_URL = 'http://localhost:5000'
 
 export function config(token) {
@@ -20,4 +22,12 @@ export function getCookieByName(cookieName) {
     })
 
     return res
+}
+
+export function notifySuccess(message) {
+    toast.success(message);
+}
+
+export function notifyFailure(message) {
+    toast.error(message);
 }

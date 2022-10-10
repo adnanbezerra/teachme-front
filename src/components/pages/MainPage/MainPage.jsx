@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useContext, useState } from 'react';
 import { useEffect } from 'react';
-import { BASE_URL, getCookieByName } from '../../../mock/data';
+import { BASE_URL, getCookieByName, notifyFailure } from '../../../mock/data';
 import UserContext from '../../contexts/UserContext';
 import SearchResultCard from '../SearchPage/SearchResultCard';
 import { Container, NoResults, PageTitle } from './MainPageStyles'
@@ -24,7 +24,7 @@ export default function MainPage() {
                 setPosts([...response.data]);
             })
             .catch(error => {
-                alert("erro na coleta de posts!")
+                notifyFailure("Falha na coleta de posts.")
                 console.error(error);
             })
     }, [])

@@ -4,6 +4,8 @@ import UserContext from './contexts/UserContext';
 import { Suspense, lazy, useState } from "react";
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const Loading = () => (
   <div>Loading...</div>
@@ -27,6 +29,7 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <GlobalStyle />
+      <ToastContainer />
 
       <BrowserRouter>
         <Routes>

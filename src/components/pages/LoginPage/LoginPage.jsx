@@ -3,9 +3,8 @@ import { BottomText, Container, Form, FormButton, FormInput, FormLabel, Register
 import { IoBook } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL, getCookieByName } from "../../../mock/data";
+import { BASE_URL, getCookieByName, notifyFailure, notifySuccess } from "../../../mock/data";
 import UserContext from "../../contexts/UserContext";
-import { toast } from "react-toastify";
 
 export default function LoginPage() {
 
@@ -28,40 +27,22 @@ export default function LoginPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    function notify() {
-        toast.success('Login feito com sucesso!', {
-            position: "top-left",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
+
 
     function submitForm(e) {
         e.preventDefault();
-
-        console.log('rodo');
-
-        notify("Roda mano pprt");
 
         const payload = { email, password };
 
         axios.post(`${BASE_URL}/signin`, payload)
             .then(response => {
                 document.cookie = `token=${response.data}; expires=${getDateOneWeekFromNow()}`
+                notifySuccess("Login feito com sucesso!");
                 setUser({ token: response.data });
                 navigate('/');
             })
             .catch(error => {
-                if (error.response.status === 401) {
-                    alert("Email ou senha errados! Tente novamente.");
-                } else if (error.response.status === 422) {
-                    alert("Envie dados válidos!");
-                }
-
+                notifyFailure("Falha no cadastro! Confira suas informações");
                 console.error(error);
             })
     }
