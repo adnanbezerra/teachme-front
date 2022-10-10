@@ -7,7 +7,6 @@ import { IoBook } from "react-icons/io5";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
-import { toast } from "react-toastify";
 
 export default function RegisterPage() {
 
