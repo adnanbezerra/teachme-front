@@ -1,5 +1,5 @@
 {
-  "name": "teachme-newfront",
+  "name": "teachme-front",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -23,7 +23,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
-    "react-toastify": "^9.1.3"
+    "react-toastify": "^9.1.3",
+    "styled-components": "^6.0.0-rc.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
