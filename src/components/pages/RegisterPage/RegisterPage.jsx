@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { ArrowContainer, BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./RegisterPageStyles";
-import axios from "axios";
-import { BASE_URL, getCookieByName, notifyFailure, notifySuccess } from "../../../mock/data";
+import { getCookieByName } from "../../../mock/data";
 import { Link, useNavigate } from "react-router-dom";
 import { IoBook } from "react-icons/io5";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { SlArrowLeft } from "react-icons/sl";
+import useCreateAccount from "../../../actions/useCreateAccount";
 
 export default function RegisterPage() {
 
@@ -17,6 +17,7 @@ export default function RegisterPage() {
     const [profilePicture, setProfilePicture] = useState("");
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
+    const register = useCreateAccount();
 
     useEffect(() => {
         if (user !== undefined) navigate("/", { replace: true });
@@ -39,20 +40,7 @@ export default function RegisterPage() {
 
         const payload = { name, email, password, profilePicture };
 
-        axios.post(`${BASE_URL}/signup`, payload)
-            .then(() => {
-                notifySuccess("Cadastro feito com sucesso!")
-                navigate("/login", { replace: true });
-            })
-            .catch(error => {
-                if (error.response.status === 409) {
-                    notifyFailure("Email já cadastrado!");
-                } else if (error.response.status === 422) {
-                    notifyFailure("Envie dados válidos!");
-                }
-
-                console.error(error);
-            })
+        register(payload);
     }
 
     function returnToMainPage() {
