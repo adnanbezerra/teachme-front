@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { getCookieByName } from "../../../mock/data";
+import { getCookieByName } from "../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { Container, Form, FormButton, FormInput, NoSearchResults } from "./SearchPageStyles";
 import SearchResultCard from "./SearchResultCard";
 import { v4 as uuid } from 'uuid';
-import useSearchPosts from "../../../actions/useSearchPosts";
+import useSearchPosts from "../../actions/useSearchPosts";
 
 export default function SearchPage() {
     let searchResults = [{}];
