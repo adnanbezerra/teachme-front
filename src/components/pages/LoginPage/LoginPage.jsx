@@ -28,8 +28,6 @@ export default function LoginPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-
-
     function submitForm(e) {
         e.preventDefault();
 
@@ -73,7 +71,7 @@ export default function LoginPage() {
             <p>Fazer login no TeachMe</p>
 
             <Form onSubmit={submitForm}>
-                <FormLabel for="email">Email</FormLabel>
+                <FormLabel htmlFor="email">Email</FormLabel>
                 <FormInput id="email"
                     value={email}
                     placeholder="Digite o seu email..."
@@ -82,7 +80,7 @@ export default function LoginPage() {
                     onChange={e => setEmail(e.target.value)}
                 />
 
-                <FormLabel for="password">Senha</FormLabel>
+                <FormLabel htmlFor="password">Senha</FormLabel>
                 <FormInput id="password"
                     value={password}
                     type="password"

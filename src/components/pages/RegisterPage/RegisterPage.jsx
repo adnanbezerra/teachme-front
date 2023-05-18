@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { ArrowContainer, BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./RegisterPageStyles";
 import axios from "axios";
 import { BASE_URL, getCookieByName, notifyFailure, notifySuccess } from "../../../mock/data";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoBook } from "react-icons/io5";
-import { RiArrowLeftSLine } from "react-icons/ri";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { SlArrowLeft } from "react-icons/sl";
@@ -41,7 +40,7 @@ export default function RegisterPage() {
         const payload = { name, email, password, profilePicture };
 
         axios.post(`${BASE_URL}/signup`, payload)
-            .then(response => {
+            .then(() => {
                 notifySuccess("Cadastro feito com sucesso!")
                 navigate("/login", { replace: true });
             })
@@ -51,7 +50,7 @@ export default function RegisterPage() {
                 } else if (error.response.status === 422) {
                     notifyFailure("Envie dados válidos!");
                 }
-                
+
                 console.error(error);
             })
     }
@@ -75,7 +74,7 @@ export default function RegisterPage() {
             <p>Cadastrar-se no TeachMe</p>
 
             <Form onSubmit={submitForm}>
-                <FormLabel for="email">Email</FormLabel>
+                <FormLabel htmlFor="email">Email</FormLabel>
                 <FormInput id="email"
                     value={email}
                     type="email"
@@ -84,7 +83,7 @@ export default function RegisterPage() {
                     onChange={e => setEmail(e.target.value)}
                 />
 
-                <FormLabel for="name">Seu nome</FormLabel>
+                <FormLabel htmlFor="name">Seu nome</FormLabel>
                 <FormInput id="name"
                     value={name}
                     required
@@ -92,7 +91,7 @@ export default function RegisterPage() {
                     onChange={e => setName(e.target.value)}
                 />
 
-                <FormLabel for="profilePicture">Link da foto de perfil (opcional)</FormLabel>
+                <FormLabel htmlFor="profilePicture">Link da foto de perfil (opcional)</FormLabel>
                 <FormInput id="profilePicture"
                     value={profilePicture}
                     type="url"
@@ -100,7 +99,7 @@ export default function RegisterPage() {
                     onChange={e => setProfilePicture(e.target.value)}
                 />
 
-                <FormLabel for="password">Senha</FormLabel>
+                <FormLabel htmlFor="password">Senha</FormLabel>
                 <FormInput id="password"
                     value={password}
                     required
@@ -109,7 +108,7 @@ export default function RegisterPage() {
                     onChange={e => setPassword(e.target.value)}
                 />
 
-                <FormLabel for="confirmPassword">Confirmar a senha</FormLabel>
+                <FormLabel htmlFor="confirmPassword">Confirmar a senha</FormLabel>
                 <FormInput id="confirmPassword"
                     value={confirmPassword}
                     required
@@ -120,6 +119,8 @@ export default function RegisterPage() {
 
                 <FormButton>Cadastrar</FormButton>
             </Form>
+
+            <RegisterBox>Já tem conta? <Link id="link" to="/login">Faça login!</Link></RegisterBox>
 
             <BottomText>
                 <span id="bottom">TeachMe © {getCurrentYear()}</span>
