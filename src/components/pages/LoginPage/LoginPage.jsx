@@ -53,6 +53,11 @@ export default function LoginPage() {
         return nextWeek;
     }
 
+    function getCurrentYear() {
+        const today = new Date();
+        return today.getFullYear();
+    }
+
     return (
         <Container>
             <IoBook style={{ fontSize: "70px", marginBottom: "5px" }} />
@@ -83,7 +88,7 @@ export default function LoginPage() {
             <RegisterBox>Ainda não tem conta? <Link id="link" to="/register">Cadastre-se!</Link></RegisterBox>
 
             <BottomText>
-                <span id="bottom">TeachMe © 2022</span>
+                <span id="bottom">TeachMe © {getCurrentYear()}</span>
                 <span id="bottom">Developed by Adnan Medeiros Bezerra</span>
             </BottomText>
         </Container>

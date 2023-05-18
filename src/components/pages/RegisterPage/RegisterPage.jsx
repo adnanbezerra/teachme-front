@@ -55,6 +55,11 @@ export default function RegisterPage() {
             })
     }
 
+    function getCurrentYear() {
+        const today = new Date();
+        return today.getFullYear();
+    }
+
     return (
         <Container>
             <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
@@ -115,7 +120,7 @@ export default function RegisterPage() {
             </Form>
 
             <BottomText>
-                <span id="bottom">TeachMe © 2022</span>
+                <span id="bottom">TeachMe © {getCurrentYear()}</span>
                 <span id="bottom">Developed by Adnan Medeiros Bezerra</span>
             </BottomText>
         </Container>
