@@ -95,7 +95,8 @@ export default function UserPage() {
                             likes={result.likes}
                             creationDate={result.creationDate}
                             description={result.description}
-                        />)
+                        />
+                    )
                 }
             </InfoDiv>
         </Container>

@@ -1,17 +1,17 @@
-import axios from "axios";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { BASE_URL, getCookieByName, notifyFailure } from "../../../mock/data";
+import { getCookieByName } from "../../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { Container, Form, FormButton, FormInput, NoSearchResults } from "./SearchPageStyles";
 import SearchResultCard from "./SearchResultCard";
 import { v4 as uuid } from 'uuid';
+import useSearchPosts from "../../../actions/useSearchPosts";
 
 export default function SearchPage() {
-
-    const [searchResults, setSearchResults] = useState([]);
+    let searchResults = [{}];
     const [search, setSearch] = useState("");
     const { setUser } = useContext(UserContext);
+    const searches = useSearchPosts();
 
     useEffect(() => {
         const tokenCookie = getCookieByName('token');
@@ -24,18 +24,7 @@ export default function SearchPage() {
     function submitForm(e) {
         e.preventDefault();
 
-        axios.get(`${BASE_URL}/post/name/${search}`)
-            .then(response => {
-                if (response.data.length === 0) {
-                    notifyFailure("Não encontramos o resultado solicitado!");
-                } else {
-                    setSearchResults([...response.data])
-                }
-            })
-            .catch(error => {
-                notifyFailure("Erro não identificado. Contate o administrador")
-                console.error(error);
-            })
+        searchResults = searches(search);
     }
 
     return (
@@ -57,7 +46,8 @@ export default function SearchPage() {
                         likes={result.likes}
                         creationDate={result.creationDate}
                         description={result.description}
-                    />)
+                    />
+                )
             }
 
         </Container>
