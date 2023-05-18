@@ -1,22 +1,23 @@
-import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL, config, getCookieByName, notifyFailure } from "../../mock/data";
+import { config, getCookieByName } from "../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { PageTitle } from "../UserPage/UserPageStyles";
 import { Container, FormButton, FormInput, FormLabel, ImageDiv, InfoDiv } from "./EditUserStyles";
 import useEditUserInfo from "../../actions/useEditUserInfo";
+import useGetUserInfo from "../../actions/useGetUserInfo";
 
 export default function EditUserPage() {
 
     const { user, setUser } = useContext(UserContext);
-    const [userInfo, setUserInfo] = useState({});
     const [name, setName] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [biography, setBiography] = useState("");
     const editUserInfo = useEditUserInfo();
+    const getUserInfo = useGetUserInfo();
+    const [userInfo, setUserInfo] = useState();
 
     const verifyUser = user === undefined;
     const navigate = useNavigate();
@@ -29,23 +30,17 @@ export default function EditUserPage() {
         if (verifyUser) {
             navigate('/', { replace: true });
         } else {
-            getUserInfo();
+            fetchData();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    function getUserInfo() {
+    function fetchData() {
         const userToken = verifyUser ? "" : user.token;
         const token = config(userToken);
 
-        axios.get(`${BASE_URL}/user/me`, token)
-            .then(response => {
-                setUserInfo(response.data);
-            })
-            .catch(error => {
-                notifyFailure("Erro ao coletar as suas informações!")
-                console.error(error);
-            })
+        const data = getUserInfo(token)
+        setUserInfo(data);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }
 
