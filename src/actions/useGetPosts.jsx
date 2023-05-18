@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../mock/data';
 
 function useGetPosts() {
-  const [data, setData] = useState([{}]);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {

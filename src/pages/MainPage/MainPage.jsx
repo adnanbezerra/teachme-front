@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import { getCookieByName } from '../../../mock/data';
+import { getCookieByName } from '../../mock/data';
 import UserContext from '../../contexts/UserContext';
 import SearchResultCard from '../SearchPage/SearchResultCard';
 import { Container, NoResults, PageTitle } from './MainPageStyles'
 import { v4 as uuid } from 'uuid';
-import useGetPosts from '../../../actions/useGetPosts';
+import useGetPosts from '../../actions/useGetPosts';
 
 export default function MainPage() {
     const { setUser } = useContext(UserContext);

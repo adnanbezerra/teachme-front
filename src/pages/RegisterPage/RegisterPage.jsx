@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { ArrowContainer, BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./RegisterPageStyles";
-import { getCookieByName } from "../../../mock/data";
 import { Link, useNavigate } from "react-router-dom";
 import { IoBook } from "react-icons/io5";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import { SlArrowLeft } from "react-icons/sl";
-import useCreateAccount from "../../../actions/useCreateAccount";
+import { getCookieByName } from "../../mock/data";
+import useCreateAccount from "../../actions/useCreateAccount";
 
 export default function RegisterPage() {
 

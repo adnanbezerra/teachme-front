@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { ArrowContainer, BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./LoginPageStyles";
 import { IoBook } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
-import { getCookieByName } from "../../../mock/data";
+import { getCookieByName } from "../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { SlArrowLeft } from "react-icons/sl";
-import useLoginToAccount from "../../../actions/useLoginToAccount";
+import useLoginToAccount from "../../actions/useLoginToAccount";
 
 export default function LoginPage() {
 

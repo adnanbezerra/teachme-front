@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL, config, getCookieByName, notifyFailure, notifySuccess } from "../../../mock/data";
+import { BASE_URL, config, getCookieByName, notifyFailure, notifySuccess } from "../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { PageTitle } from "../MainPage/MainPageStyles";
 import { Container, Form, FormButton, FormInput, FormLabel } from "./NewPostStyle";
