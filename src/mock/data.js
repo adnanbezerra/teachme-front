@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export const BASE_URL = 'https://teachme-back.herokuapp.com/';
+export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export function config(token) {
     return {
