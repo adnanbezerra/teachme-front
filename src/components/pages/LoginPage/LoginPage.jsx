@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { ArrowContainer, BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./LoginPageStyles";
 import { IoBook } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { BASE_URL, getCookieByName, notifyFailure, notifySuccess } from "../../../mock/data";
+import { getCookieByName } from "../../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { SlArrowLeft } from "react-icons/sl";
+import useLoginToAccount from "../../../actions/useLoginToAccount";
 
 export default function LoginPage() {
 
@@ -13,6 +13,7 @@ export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const login = useLoginToAccount();
 
     useEffect(() => {
         if (user !== undefined) navigate("/", { replace: true });
@@ -33,23 +34,7 @@ export default function LoginPage() {
 
         const payload = { email, password };
 
-        axios.post(`${BASE_URL}/signin`, payload)
-            .then(response => {
-                document.cookie = `token=${response.data}; expires=${getDateOneWeekFromNow()}`
-                notifySuccess("Login feito com sucesso!");
-                setUser({ token: response.data });
-                navigate('/');
-            })
-            .catch(error => {
-                notifyFailure("Falha no login! Confira suas informações");
-                console.error(error);
-            })
-    }
-
-    function getDateOneWeekFromNow() {
-        const today = new Date();
-        const nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
-        return nextWeek;
+        login(payload);
     }
 
     function getCurrentYear() {
