@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import axios from 'axios';
 import { BASE_URL, notifyFailure, notifySuccess } from '../mock/data';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../components/contexts/UserContext';
+import UserContext from '../contexts/UserContext';
 
 function getDateOneWeekFromNow() {
   const today = new Date();
