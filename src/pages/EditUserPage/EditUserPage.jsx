@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL, config, getCookieByName, notifyFailure, notifySuccess } from "../../mock/data";
+import { BASE_URL, config, getCookieByName, notifyFailure } from "../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { PageTitle } from "../UserPage/UserPageStyles";
 import { Container, FormButton, FormInput, FormLabel, ImageDiv, InfoDiv } from "./EditUserStyles";
+import useEditUserInfo from "../../actions/useEditUserInfo";
 
 export default function EditUserPage() {
 
@@ -15,6 +16,7 @@ export default function EditUserPage() {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [biography, setBiography] = useState("");
+    const editUserInfo = useEditUserInfo();
 
     const verifyUser = user === undefined;
     const navigate = useNavigate();
@@ -55,15 +57,7 @@ export default function EditUserPage() {
         const payload = { email, userInfo, profilePicture, password, biography };
 
         if (window.confirm("Quer editar suas informações?")) {
-            axios.put(`${BASE_URL}/user/id/${verifyUser ? "" : user.id}`, payload, token)
-                .then(() => {
-                    notifySuccess("Sucesso ao editar suas informações!");
-                    navigate("/");
-                })
-                .catch(error => {
-                    console.error(error);
-                    notifyFailure("Falha ao atualizar as suas informações.");
-                });
+            editUserInfo(user.id, payload, token);
         }
     }
 
