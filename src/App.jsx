@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import GlobalStyle from '../assets/styles/GlobalStyle';
-import UserContext from './contexts/UserContext';
+import GlobalStyle from './assets/styles/GlobalStyle';
+import UserContext from './components/contexts/UserContext';
 import { Suspense, lazy, useState } from "react";
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './components/pages/RegisterPage/RegisterPage';
+import LoginPage from './components/pages/LoginPage/LoginPage';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
@@ -17,13 +17,13 @@ const LazyWrapper = (Component) => (props) => (
   </Suspense>
 )
 
-const Template = LazyWrapper(lazy(() => import("./templates/PageTemplate/PageTemplate")));
-const MainPage = LazyWrapper(lazy(() => import("./pages/MainPage/MainPage")));
-const SearchPage = LazyWrapper(lazy(() => import("./pages/SearchPage/SearchPage")));
-const Logout = LazyWrapper(lazy(() => import("./pages/LoginPage/Logout")));
-const UserPage = LazyWrapper(lazy(() => import("./pages/UserPage/UserPage")));
-const EditUser = LazyWrapper(lazy(() => import("./pages/EditUserPage/EditUserPage")));
-const NewPost = LazyWrapper(lazy(() => import("./pages/NewPostPage/NewPostPage")));
+const Template = LazyWrapper(lazy(() => import("./components/templates/PageTemplate/PageTemplate")));
+const MainPage = LazyWrapper(lazy(() => import("./components/pages/MainPage/MainPage")));
+const SearchPage = LazyWrapper(lazy(() => import("./components/pages/SearchPage/SearchPage")));
+const Logout = LazyWrapper(lazy(() => import("./components/pages/LoginPage/Logout")));
+const UserPage = LazyWrapper(lazy(() => import("./components/pages/UserPage/UserPage")));
+const EditUser = LazyWrapper(lazy(() => import("./components/pages/EditUserPage/EditUserPage")));
+const NewPost = LazyWrapper(lazy(() => import("./components/pages/NewPostPage/NewPostPage")));
 
 function App() {
   const [user, setUser] = useState();
