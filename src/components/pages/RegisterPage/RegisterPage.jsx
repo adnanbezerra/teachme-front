@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BottomText, Container, Form, FormButton, FormInput, FormLabel, ReturnButton } from "./RegisterPageStyles";
+import { ArrowContainer, BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./RegisterPageStyles";
 import axios from "axios";
 import { BASE_URL, getCookieByName, notifyFailure, notifySuccess } from "../../../mock/data";
 import { useNavigate, Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import { IoBook } from "react-icons/io5";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import { SlArrowLeft } from "react-icons/sl";
 
 export default function RegisterPage() {
 
@@ -55,6 +56,10 @@ export default function RegisterPage() {
             })
     }
 
+    function returnToMainPage() {
+        navigate('/');
+    }
+
     function getCurrentYear() {
         const today = new Date();
         return today.getFullYear();
@@ -62,12 +67,9 @@ export default function RegisterPage() {
 
     return (
         <Container>
-            <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
-                <ReturnButton>
-                    <RiArrowLeftSLine style={{ fontSize: "25px" }} />
-                    Retornar
-                </ReturnButton>
-            </Link>
+            <ArrowContainer>
+                <SlArrowLeft onClick={returnToMainPage} />
+            </ArrowContainer>
 
             <IoBook style={{ fontSize: "70px", marginBottom: "5px" }} />
             <p>Cadastrar-se no TeachMe</p>

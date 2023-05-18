@@ -14,6 +14,16 @@ export const Container = styled.div`
     }
 `
 
+export const ArrowContainer = styled.div`
+    position: fixed;
+    left: 20px;
+    top: 25px;
+
+    :hover {
+        cursor: pointer;
+    }
+`
+
 export const Form = styled.form`
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -35,6 +45,7 @@ export const FormInput = styled.input`
     margin-top: 5px;
     padding-left: 10px;
     font-family: 'Roboto', sans-serif;
+    margin-bottom: 15px;
 
     ::placeholder {
         font-style: italic;
@@ -57,7 +68,6 @@ export const FormButton = styled.button`
     box-sizing: border-box;
     border: 0;
     border-radius: 5px;    
-    margin-top: 15px;
 
     &:hover {
         cursor: pointer;

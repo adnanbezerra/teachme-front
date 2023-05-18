@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./LoginPageStyles";
+import { ArrowContainer, BottomText, Container, Form, FormButton, FormInput, FormLabel, RegisterBox } from "./LoginPageStyles";
 import { IoBook } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL, getCookieByName, notifyFailure, notifySuccess } from "../../../mock/data";
 import UserContext from "../../contexts/UserContext";
+import { SlArrowLeft } from "react-icons/sl";
 
 export default function LoginPage() {
 
@@ -58,8 +59,16 @@ export default function LoginPage() {
         return today.getFullYear();
     }
 
+    function returnToMainPage() {
+        navigate('/');
+    }
+
     return (
         <Container>
+            <ArrowContainer>
+                <SlArrowLeft onClick={returnToMainPage} />
+            </ArrowContainer>
+            
             <IoBook style={{ fontSize: "70px", marginBottom: "5px" }} />
             <p>Fazer login no TeachMe</p>
 

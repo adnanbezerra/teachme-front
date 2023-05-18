@@ -14,6 +14,16 @@ export const Container = styled.div`
     }
 `
 
+export const ArrowContainer = styled.div`
+    position: fixed;
+    left: 20px;
+    top: 25px;
+
+    :hover {
+        cursor: pointer;
+    }
+`
+
 export const Form = styled.form`
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -35,6 +45,7 @@ export const FormInput = styled.input`
     margin-top: 5px;
     padding-left: 10px;
     font-family: 'Roboto', sans-serif;
+    margin-bottom: 10px;
 
     ::placeholder {
         font-style: italic;
@@ -80,16 +91,22 @@ export const BottomText = styled.div`
     }
 `
 
-export const ReturnButton = styled.div`
+
+export const RegisterBox = styled.div`
+    height: 55px;
+    width: 80%;
+    border: 1px solid #b8b8b8;
+    border-radius: 10px;
+    margin-top: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    position: fixed;
-    top: 20px;
-    left: 10px;
+    box-sizing: border-box;
 
-    &:hover {
-        cursor: pointer;
+    #link {
+        text-decoration: none;
+        color: #218BFF;
+        margin-left: 3px;
     }
 `
