@@ -45,7 +45,7 @@ export default function EditUserPage() {
                 console.error(error);
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    };
+    }
 
     function submitForm(e) {
         e.preventDefault();
@@ -56,7 +56,7 @@ export default function EditUserPage() {
 
         if (window.confirm("Quer editar suas informações?")) {
             axios.put(`${BASE_URL}/user/id/${verifyUser ? "" : user.id}`, payload, token)
-                .then(response => {
+                .then(() => {
                     notifySuccess("Sucesso ao editar suas informações!");
                     navigate("/");
                 })
@@ -64,7 +64,7 @@ export default function EditUserPage() {
                     console.error(error);
                     notifyFailure("Falha ao atualizar as suas informações.");
                 });
-        };
+        }
     }
 
     return (

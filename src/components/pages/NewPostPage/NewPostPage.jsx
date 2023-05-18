@@ -36,7 +36,7 @@ export default function NewPostPage() {
         const payload = { name, description, creationDate };
 
         axios.post(`${BASE_URL}/new-post`, payload, token)
-            .then(response => {
+            .then(() => {
                 notifySuccess("Post criado com sucesso! Agora você pode adicionar capítulos e depois torná-la pública.");
                 navigate("/");
             })

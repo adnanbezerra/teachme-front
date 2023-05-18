@@ -6,6 +6,7 @@ import UserContext from "../../contexts/UserContext";
 import { NoSearchResults } from "../SearchPage/SearchPageStyles";
 import SearchResultCard from "../SearchPage/SearchResultCard";
 import { Container, EditUser, Email, ImageDiv, InfoDiv, InfoText, PageTitle } from "./UserPageStyles";
+import { v4 as uuid } from 'uuid';
 
 export default function UserPage() {
 
@@ -42,7 +43,7 @@ export default function UserPage() {
                 console.error(error);
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    };
+    }
 
     function getMyPosts() {
         const userToken = verifyUser ? "" : user.token;
@@ -85,7 +86,16 @@ export default function UserPage() {
                 {myPosts.length === 0 ?
                     <NoSearchResults>Nenhum resultado encontrado...</NoSearchResults>
                     :
-                    myPosts.map(result => <SearchResultCard id={result.id} name={result.name} views={result.views} likes={result.likes} creationDate={result.creationDate} description={result.description} />)
+                    myPosts.map(result =>
+                        <SearchResultCard
+                            key={uuid()}
+                            id={result.id}
+                            name={result.name}
+                            views={result.views}
+                            likes={result.likes}
+                            creationDate={result.creationDate}
+                            description={result.description}
+                        />)
                 }
             </InfoDiv>
         </Container>

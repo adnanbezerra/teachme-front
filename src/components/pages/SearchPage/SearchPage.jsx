@@ -5,6 +5,7 @@ import { BASE_URL, getCookieByName, notifyFailure } from "../../../mock/data";
 import UserContext from "../../contexts/UserContext";
 import { Container, Form, FormButton, FormInput, NoSearchResults } from "./SearchPageStyles";
 import SearchResultCard from "./SearchResultCard";
+import { v4 as uuid } from 'uuid';
 
 export default function SearchPage() {
 
@@ -47,7 +48,16 @@ export default function SearchPage() {
             {searchResults.length === 0 ?
                 <NoSearchResults>Nenhum resultado encontrado...</NoSearchResults>
                 :
-                searchResults.map(result => <SearchResultCard id={result.id} name={result.name} views={result.views} likes={result.likes} creationDate={result.creationDate} description={result.description} />)
+                searchResults.map(result =>
+                    <SearchResultCard
+                        key={uuid()}
+                        id={result.id}
+                        name={result.name}
+                        views={result.views}
+                        likes={result.likes}
+                        creationDate={result.creationDate}
+                        description={result.description}
+                    />)
             }
 
         </Container>
