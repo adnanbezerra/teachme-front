@@ -10,11 +10,13 @@ import useGetUserInfo from "../../actions/useGetUserInfo";
 export default function EditUserPage() {
 
     const { user, setUser } = useContext(UserContext);
-    const [name, setName] = useState("");
-    const [profilePicture, setProfilePicture] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [biography, setBiography] = useState("");
+    const [userData, setUserData] = useState({
+        username: "",
+        password: "",
+        profilePicture: "",
+        email: "",
+        biography: "",
+    });
     const editUserInfo = useEditUserInfo();
     const getUserInfo = useGetUserInfo();
     const [userInfo, setUserInfo] = useState();
@@ -49,11 +51,16 @@ export default function EditUserPage() {
 
         const userToken = verifyUser ? "" : user.token;
         const token = config(userToken);
-        const payload = { email, userInfo, profilePicture, password, biography };
+        const payload = { ...userData, userInfo };
 
         if (window.confirm("Quer editar suas informações?")) {
             editUserInfo(user.id, payload, token);
         }
+    }
+
+    function handleChange(valueName, entry) {
+        const newData = { ...userData, valueName: entry };
+        setUserData(newData);
     }
 
     return (
@@ -71,30 +78,30 @@ export default function EditUserPage() {
 
                 <FormLabel for="name">Nome:</FormLabel>
                 <FormInput id="name"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
+                    value={userData.name}
+                    onChange={e => handleChange("name", e.target.value)}
                     placeholder="Insira seu novo nome de usuário"
                 />
 
                 <FormLabel for="biography">Biografia:</FormLabel>
                 <FormInput id="biography"
-                    value={biography}
-                    onChange={e => setBiography(e.target.value)}
+                    value={userData.biography}
+                    onChange={e => handleChange("biography", e.target.value)}
                     placeholder="Insira sua nova biografia"
                 />
 
                 <FormLabel for="profilePicture">Link para a foto de perfil:</FormLabel>
                 <FormInput id="profilePicture"
-                    value={profilePicture}
-                    onChange={e => setProfilePicture(e.target.value)}
+                    value={userData.profilePicture}
+                    onChange={e => handleChange("profilePicture", e.target.value)}
                     type="url"
                     placeholder="Insira sua nova foto de perfil"
                 />
 
                 <FormLabel for="email">Email:</FormLabel>
                 <FormInput id="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    value={userData.email}
+                    onChange={e => handleChange("email", e.target.value)}
                     type="email"
                     placeholder="Insira seu novo e-mail"
                 />
@@ -102,8 +109,8 @@ export default function EditUserPage() {
                 <FormLabel for="password">Confirme a sua senha:</FormLabel>
                 <FormInput id="password"
                     required
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    value={userData.password}
+                    onChange={e => handleChange("password", e.target.value)}
                     type="password"
                     placeholder="Insira sua senha"
                 />
